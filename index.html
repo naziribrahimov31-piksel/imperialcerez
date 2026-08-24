@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Imperial Çərəz — İş üçün müraciət</title>
 
 <style>
@@ -131,18 +132,24 @@ button:hover{
   background:#986914;
 }
 
-footer{
-  text-align:center;
-  padding:25px;
-  color:#8b8172;
-  font-size:12px;
+button:disabled{
+  opacity:.6;
+  cursor:not-allowed;
 }
 
-/* UĞURLU MÜRACİƏT SƏHİFƏSİ */
-
-.success{
+.message{
   display:none;
-  min-height:calc(100vh - 80px);
+  margin-top:18px;
+  padding:14px;
+  border-radius:10px;
+  text-align:center;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.success-page{
+  display:none;
+  min-height:100vh;
   align-items:center;
   justify-content:center;
   padding:25px;
@@ -189,6 +196,13 @@ footer{
 
 .back{
   margin-top:30px;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#8b8172;
+  font-size:12px;
 }
 
 @media(max-width:600px){
@@ -242,36 +256,21 @@ footer{
       Məlumatlarınızı düzgün daxil edin.
     </p>
 
-    <!--
-      MÜRACİƏTLƏR BU E-POÇTA GÖNDƏRİLƏCƏK:
-      imperialcerez@yahoo.com
-    -->
-
+    <!-- FORMSPREE -->
     <form
       id="applicationForm"
-      action="https://formsubmit.co/imperialcerez@yahoo.com"
+      action="https://formspree.io/f/mqpzoryb"
       method="POST"
-      target="hiddenFrame"
     >
 
+      <!-- E-poçt başlığı -->
       <input
         type="hidden"
         name="_subject"
         value="Imperial Çərəz — Yeni iş müraciəti"
       >
 
-      <input
-        type="hidden"
-        name="_template"
-        value="table"
-      >
-
-      <input
-        type="hidden"
-        name="_captcha"
-        value="false"
-      >
-
+      <!-- Ad -->
       <div class="field">
 
         <label>Ad</label>
@@ -285,6 +284,7 @@ footer{
 
       </div>
 
+      <!-- Soyad -->
       <div class="field">
 
         <label>Soyad</label>
@@ -298,6 +298,7 @@ footer{
 
       </div>
 
+      <!-- Ata adı -->
       <div class="field">
 
         <label>Ata adı</label>
@@ -311,6 +312,7 @@ footer{
 
       </div>
 
+      <!-- FİN -->
       <div class="field">
 
         <label>Şəxsiyyət vəsiqəsi FİN kodu</label>
@@ -326,6 +328,7 @@ footer{
 
       </div>
 
+      <!-- Telefon -->
       <div class="field">
 
         <label>Əlaqə nömrəsi</label>
@@ -339,6 +342,7 @@ footer{
 
       </div>
 
+      <!-- Email -->
       <div class="field">
 
         <label>E-poçt ünvanı</label>
@@ -352,6 +356,7 @@ footer{
 
       </div>
 
+      <!-- Razılıq -->
       <label class="consent">
 
         <input
@@ -366,18 +371,19 @@ footer{
 
       </label>
 
-      <button type="submit">
+      <button
+        id="submitButton"
+        type="submit"
+      >
         MÜRACİƏTİ GÖNDƏR
       </button>
 
-    </form>
+      <div
+        id="message"
+        class="message"
+      ></div>
 
-    <!-- FormSubmit cavabını gizli qəbul edir -->
-    <iframe
-      name="hiddenFrame"
-      id="hiddenFrame"
-      style="display:none;"
-    ></iframe>
+    </form>
 
   </div>
 
@@ -390,9 +396,12 @@ footer{
 </div>
 
 
-<!-- UĞURLU MÜRACİƏT -->
+<!-- UĞURLU MÜRACİƏT SƏHİFƏSİ -->
 
-<div id="successPage" class="success">
+<div
+  id="successPage"
+  class="success-page"
+>
 
   <div class="success-box">
 
@@ -441,29 +450,69 @@ document.getElementById("applicationPage");
 const successPage =
 document.getElementById("successPage");
 
-const hiddenFrame =
-document.getElementById("hiddenFrame");
+const message =
+document.getElementById("message");
+
+const submitButton =
+document.getElementById("submitButton");
 
 
-form.addEventListener("submit", function(){
+form.addEventListener("submit", async function(event){
 
-  /*
-    Formun serverə göndərilməsi üçün
-    qısa vaxt veririk.
-  */
+  event.preventDefault();
 
-  setTimeout(function(){
+  submitButton.disabled = true;
+  submitButton.innerText = "GÖNDƏRİLİR...";
 
-    applicationPage.style.display = "none";
+  message.style.display = "none";
 
-    successPage.style.display = "flex";
+  const formData = new FormData(form);
 
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
+  try {
 
-  },1000);
+    const response = await fetch(
+      form.action,
+      {
+        method:"POST",
+        body:formData,
+        headers:{
+          "Accept":"application/json"
+        }
+      }
+    );
+
+    if(response.ok){
+
+      applicationPage.style.display = "none";
+
+      successPage.style.display = "flex";
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+      form.reset();
+
+    }else{
+
+      throw new Error("Göndərilmədi");
+
+    }
+
+  }catch(error){
+
+    message.style.display = "block";
+    message.style.background = "#f8e1df";
+    message.style.color = "#9b382d";
+
+    message.innerText =
+      "Müraciət göndərilmədi. Zəhmət olmasa yenidən cəhd edin.";
+
+    submitButton.disabled = false;
+    submitButton.innerText = "MÜRACİƏTİ GÖNDƏR";
+
+  }
 
 });
 
@@ -474,7 +523,8 @@ function showApplication(){
 
   applicationPage.style.display = "block";
 
-  form.reset();
+  submitButton.disabled = false;
+  submitButton.innerText = "MÜRACİƏTİ GÖNDƏR";
 
   window.scrollTo({
     top:0,
