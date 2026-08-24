@@ -7,216 +7,218 @@
 <title>Imperial Çərəz — İş üçün müraciət</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
-body{
-  min-height:100vh;
-  background:#f7f2e8;
-  color:#241b10;
+body {
+  min-height: 100vh;
+  background: #f7f2e8;
+  color: #241b10;
 }
 
-header{
-  background:#241b10;
-  color:white;
-  padding:22px;
-  text-align:center;
+header {
+  background: #241b10;
+  color: white;
+  padding: 22px;
+  text-align: center;
 }
 
-.logo{
-  font-size:28px;
-  font-weight:bold;
-  letter-spacing:2px;
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
-.logo span{
-  color:#d9a441;
+.logo span {
+  color: #d9a441;
 }
 
-.container{
-  width:92%;
-  max-width:650px;
-  margin:45px auto;
+.container {
+  width: 92%;
+  max-width: 650px;
+  margin: 45px auto;
 }
 
-.intro{
-  text-align:center;
-  margin-bottom:25px;
+.intro {
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-.intro h1{
-  font-size:32px;
-  margin-bottom:10px;
+.intro h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
-.intro p{
-  color:#756b5d;
-  line-height:1.6;
+.intro p {
+  color: #756b5d;
+  line-height: 1.6;
 }
 
-.form-box{
-  background:white;
-  padding:32px;
-  border-radius:20px;
-  box-shadow:0 10px 35px rgba(0,0,0,.08);
+.form-box {
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.08);
 }
 
-.form-box h2{
-  margin-bottom:8px;
-  font-size:23px;
+.form-box h2 {
+  margin-bottom: 8px;
+  font-size: 23px;
 }
 
-.subtitle{
-  color:#888;
-  font-size:14px;
-  margin-bottom:25px;
+.subtitle {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 25px;
 }
 
-.field{
-  margin-bottom:17px;
+.field {
+  margin-bottom: 17px;
 }
 
-.field label{
-  display:block;
-  font-size:14px;
-  font-weight:bold;
-  margin-bottom:7px;
+.field label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 7px;
 }
 
-.field input{
-  width:100%;
-  padding:14px;
-  border:1px solid #ddd2c1;
-  border-radius:10px;
-  outline:none;
-  font-size:15px;
-  background:#fffdf9;
+.field input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd2c1;
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+  background: #fffdf9;
 }
 
-.field input:focus{
-  border-color:#c29335;
-  box-shadow:0 0 0 3px rgba(194,147,53,.12);
+.field input:focus {
+  border-color: #c29335;
+  box-shadow: 0 0 0 3px rgba(194,147,53,0.12);
 }
 
-.consent{
-  display:flex;
-  gap:9px;
-  align-items:flex-start;
-  margin:20px 0;
-  color:#756b5d;
-  font-size:12px;
-  line-height:1.5;
+.consent {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  margin: 20px 0;
+  color: #756b5d;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
-.consent input{
-  margin-top:2px;
+.consent input {
+  margin-top: 2px;
 }
 
-button{
-  width:100%;
-  padding:15px;
-  border:none;
-  border-radius:11px;
-  background:#b47d18;
-  color:white;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
+button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 11px;
+  background: #b47d18;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-button:hover{
-  background:#986914;
+button:hover {
+  background: #986914;
 }
 
-button:disabled{
-  opacity:.6;
-  cursor:not-allowed;
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-.message{
-  display:none;
-  margin-top:18px;
-  padding:14px;
-  border-radius:10px;
-  text-align:center;
-  font-size:14px;
-  font-weight:bold;
+.message {
+  display: none;
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
 }
 
-.success-page{
-  display:none;
-  min-height:100vh;
-  align-items:center;
-  justify-content:center;
-  padding:25px;
+/* UĞURLU MÜRACİƏT */
+
+.success-page {
+  display: none;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
 }
 
-.success-box{
-  width:100%;
-  max-width:550px;
-  background:white;
-  padding:45px 30px;
-  border-radius:22px;
-  text-align:center;
-  box-shadow:0 10px 40px rgba(0,0,0,.08);
+.success-box {
+  width: 100%;
+  max-width: 550px;
+  background: white;
+  padding: 45px 30px;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
 }
 
-.check{
-  width:75px;
-  height:75px;
-  margin:0 auto 25px;
-  border-radius:50%;
-  background:#b47d18;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:38px;
-  font-weight:bold;
+.check {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  background: #b47d18;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  font-weight: bold;
 }
 
-.success-box h1{
-  font-size:28px;
-  margin-bottom:15px;
+.success-box h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
 }
 
-.success-box p{
-  color:#756b5d;
-  line-height:1.7;
-  font-size:14px;
+.success-box p {
+  color: #756b5d;
+  line-height: 1.7;
+  font-size: 14px;
 }
 
-.success-box .thanks{
-  margin-top:10px;
+.success-box .thanks {
+  margin-top: 10px;
 }
 
-.back{
-  margin-top:30px;
+.back {
+  margin-top: 30px;
 }
 
-footer{
-  text-align:center;
-  padding:25px;
-  color:#8b8172;
-  font-size:12px;
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #8b8172;
+  font-size: 12px;
 }
 
-@media(max-width:600px){
+@media (max-width: 600px) {
 
-  .container{
-    margin:25px auto;
+  .container {
+    margin: 25px auto;
   }
 
-  .form-box{
-    padding:22px;
+  .form-box {
+    padding: 22px;
   }
 
-  .intro h1{
-    font-size:27px;
+  .intro h1 {
+    font-size: 27px;
   }
 
 }
@@ -256,21 +258,24 @@ footer{
       Məlumatlarınızı düzgün daxil edin.
     </p>
 
-    <!-- FORMSPREE -->
+    <!-- FORMSPREE FORM -->
+
     <form
       id="applicationForm"
-      action="https://formspree.io/f/mqpzoryb"
+      action="https://formspree.io/f/xyegarbj"
       method="POST"
     >
 
-      <!-- E-poçt başlığı -->
+      <!-- E-POÇT BAŞLIĞI -->
+
       <input
         type="hidden"
         name="_subject"
         value="Imperial Çərəz — Yeni iş müraciəti"
       >
 
-      <!-- Ad -->
+      <!-- AD -->
+
       <div class="field">
 
         <label>Ad</label>
@@ -284,7 +289,8 @@ footer{
 
       </div>
 
-      <!-- Soyad -->
+      <!-- SOYAD -->
+
       <div class="field">
 
         <label>Soyad</label>
@@ -298,7 +304,8 @@ footer{
 
       </div>
 
-      <!-- Ata adı -->
+      <!-- ATA ADI -->
+
       <div class="field">
 
         <label>Ata adı</label>
@@ -313,6 +320,7 @@ footer{
       </div>
 
       <!-- FİN -->
+
       <div class="field">
 
         <label>Şəxsiyyət vəsiqəsi FİN kodu</label>
@@ -328,7 +336,8 @@ footer{
 
       </div>
 
-      <!-- Telefon -->
+      <!-- TELEFON -->
+
       <div class="field">
 
         <label>Əlaqə nömrəsi</label>
@@ -342,7 +351,8 @@ footer{
 
       </div>
 
-      <!-- Email -->
+      <!-- E-POÇT -->
+
       <div class="field">
 
         <label>E-poçt ünvanı</label>
@@ -356,7 +366,8 @@ footer{
 
       </div>
 
-      <!-- Razılıq -->
+      <!-- RAZILIQ -->
+
       <label class="consent">
 
         <input
@@ -370,6 +381,8 @@ footer{
         </span>
 
       </label>
+
+      <!-- SUBMIT -->
 
       <button
         id="submitButton"
@@ -396,7 +409,7 @@ footer{
 </div>
 
 
-<!-- UĞURLU MÜRACİƏT SƏHİFƏSİ -->
+<!-- UĞURLU GÖNDƏRİŞ SƏHİFƏSİ -->
 
 <div
   id="successPage"
@@ -457,11 +470,12 @@ const submitButton =
 document.getElementById("submitButton");
 
 
-form.addEventListener("submit", async function(event){
+form.addEventListener("submit", async function(event) {
 
   event.preventDefault();
 
   submitButton.disabled = true;
+
   submitButton.innerText = "GÖNDƏRİLİR...";
 
   message.style.display = "none";
@@ -473,62 +487,67 @@ form.addEventListener("submit", async function(event){
     const response = await fetch(
       form.action,
       {
-        method:"POST",
-        body:formData,
-        headers:{
-          "Accept":"application/json"
+        method: "POST",
+        body: formData,
+        headers: {
+          "Accept": "application/json"
         }
       }
     );
 
-    if(response.ok){
+    if (response.ok) {
+
+      form.reset();
 
       applicationPage.style.display = "none";
 
       successPage.style.display = "flex";
 
       window.scrollTo({
-        top:0,
-        behavior:"smooth"
+        top: 0,
+        behavior: "smooth"
       });
 
-      form.reset();
-
-    }else{
+    } else {
 
       throw new Error("Göndərilmədi");
 
     }
 
-  }catch(error){
+  } catch (error) {
 
     message.style.display = "block";
+
     message.style.background = "#f8e1df";
+
     message.style.color = "#9b382d";
 
     message.innerText =
       "Müraciət göndərilmədi. Zəhmət olmasa yenidən cəhd edin.";
 
     submitButton.disabled = false;
-    submitButton.innerText = "MÜRACİƏTİ GÖNDƏR";
 
+    submitButton.innerText =
+      "MÜRACİƏTİ GÖNDƏR";
   }
 
 });
 
 
-function showApplication(){
+function showApplication() {
 
   successPage.style.display = "none";
 
   applicationPage.style.display = "block";
 
   submitButton.disabled = false;
-  submitButton.innerText = "MÜRACİƏTİ GÖNDƏR";
+
+  submitButton.innerText =
+    "MÜRACİƏTİ GÖNDƏR";
 
   window.scrollTo({
-    top:0,
-    behavior:"smooth"
+    top: 0,
+    behavior: "smooth"
   });
 
 }
